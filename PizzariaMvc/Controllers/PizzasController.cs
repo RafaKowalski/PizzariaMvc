@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PizzariaMvc.Data;
 using PizzariaMvc.Models;
+using PizzariaMvc.Services;
 
 namespace PizzariaMvc.Controllers
 {
     public class PizzasController : Controller
     {
-        private readonly PizzariaMvcContext _context;
+        private readonly PizzasService _pizzasService;
 
-        public PizzasController(PizzariaMvcContext context)
+        public PizzasController(PizzasService pizzasService)
         {
-            _context = context;
+            _pizzasService = pizzasService;
         }
 
         // GET: Pizzas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pizzas.ToListAsync());
+            return View(await _pizzasService.FindAllPizzasAsync());
         }
     }
 }
