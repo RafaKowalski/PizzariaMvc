@@ -1,0 +1,54 @@
+﻿@model PizzariaMvc.Models.Pedido
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdPizzas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QtdPizzas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TamanhoPizza)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TamanhoPizza)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrocoPara)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrocoPara)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Troco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Troco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Clientes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizzas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizzas)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
