@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzariaMvc.Data;
 
 namespace PizzariaMvc.Migrations
 {
     [DbContext(typeof(PizzariaMvcContext))]
-    partial class PizzariaMvcContextModelSnapshot : ModelSnapshot
+    [Migration("20230105180950_RefatorandoAtributosClassePedido")]
+    partial class RefatorandoAtributosClassePedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
