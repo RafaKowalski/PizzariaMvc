@@ -20,5 +20,11 @@ namespace PizzariaMvc.Services
         {
             return await _pizzariaMvcDbContext.Pizzas.OrderBy(x => x.Sabor).ToListAsync();
         }
+
+        public async Task AddPizza(Pizza pizza)
+        {
+            _pizzariaMvcDbContext.Add(pizza);
+            await _pizzariaMvcDbContext.SaveChangesAsync();
+        }
     }
 }

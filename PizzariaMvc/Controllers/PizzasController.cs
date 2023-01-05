@@ -25,5 +25,20 @@ namespace PizzariaMvc.Controllers
         {
             return View(await _pizzasService.FindAllPizzasAsync());
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Sabor,TamanhoPizza,Preco,Descricao")] Pizza pizza)
+        {
+            if (ModelState.IsValid)
+            {
+                _pizzasService.AddPizza(pizza);
+            }
+            return View(pizza);
+        }
     }
 }
