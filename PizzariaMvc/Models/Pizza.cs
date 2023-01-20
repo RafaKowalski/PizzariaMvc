@@ -6,13 +6,13 @@ namespace PizzariaMvc.Models
     {
         public int Id { get; set; }
         public TamanhoPizza TamanhoPizza { get; set; }
-        public double Preco { get; set; }
+        public decimal Preco { get; set; }
 
         public Pizza()
         {
         }
 
-        public Pizza(int id, TamanhoPizza tamanhoPizza, double preco)
+        public Pizza(int id, TamanhoPizza tamanhoPizza, decimal preco)
         {
             Id = id;
             TamanhoPizza = tamanhoPizza;
