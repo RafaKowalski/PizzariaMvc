@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PizzariaMvc.Models.Cardapio>
+
+@{
+    ViewData["Title"] = "Cardapio";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sabor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                   <tr>
+                       <td>
+                    @Html.DisplayFor(modelItem => item.Sabor)
+                       </td>
+                        <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                       </td>
+                   </tr>  
+        }
+    </tbody>
+</table>
