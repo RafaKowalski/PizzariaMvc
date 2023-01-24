@@ -1,4 +1,5 @@
 ﻿using PizzariaMvc.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzariaMvc.Models
 {
@@ -6,6 +7,7 @@ namespace PizzariaMvc.Models
     {
         public int Id { get; set; }
         public TamanhoPizza TamanhoPizza { get; set; }
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal Preco { get; set; }
 
         public Pizza()
