@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,20 +26,48 @@ namespace PizzariaMvc.Controllers
         {
             return View(await _pizzasService.FindAllPizzasAsync());
         }
-        public IActionResult Create()
+
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+                return NotFound();
+
+            var pizzas = await _pizzasService.ProcuraIdPizza(id);
+
+            if (pizzas == null)
+                return NotFound();
+
+            return View(pizzas);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Sabor,TamanhoPizza,Preco,Descricao")] Pizza pizza)
+        public async Task<IActionResult> Edit(int id, [Bind("TamanhoPizza,Preco")] Pizza pizza)
         {
+            if (id != pizza.Id)
+                return NotFound();
+
             if (ModelState.IsValid)
             {
-                _pizzasService.AddPizza(pizza);
+                try
+                {
+                    await _pizzasService.EditaPizza(pizza);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PizzaExiste(pizza.Id))
+                        return NotFound();
+                    else
+                        throw;
+                }
+                return RedirectToAction(nameof(Index));
             }
             return View(pizza);
+        }
+
+        private bool PizzaExiste(int id)
+        {
+            return _pizzasService.PizzaExiste(id);
         }
     }
 }

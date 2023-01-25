@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using PizzariaMvc.Data;
 using PizzariaMvc.Models;
 using System.Collections.Generic;
@@ -25,6 +26,22 @@ namespace PizzariaMvc.Services
         {
             _pizzariaMvcDbContext.Add(pizza);
             await _pizzariaMvcDbContext.SaveChangesAsync();
+        }
+
+        public async Task<Pizza> ProcuraIdPizza(int? id)
+        {
+            return await _pizzariaMvcDbContext.Pizzas.FindAsync(id);
+        }
+
+        public async Task EditaPizza(Pizza pizza)
+        {
+            _pizzariaMvcDbContext.Update(pizza);
+            await _pizzariaMvcDbContext.SaveChangesAsync();
+        }
+
+        public bool PizzaExiste(int id)
+        {
+            return _pizzariaMvcDbContext.Pizzas.Any(p => p.Id == id);
         }
     }
 }
