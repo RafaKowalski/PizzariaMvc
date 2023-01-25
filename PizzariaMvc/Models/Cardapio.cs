@@ -1,4 +1,6 @@
-﻿namespace PizzariaMvc.Models
+﻿using System.Collections.Generic;
+
+namespace PizzariaMvc.Models
 {
     public class Cardapio
     {

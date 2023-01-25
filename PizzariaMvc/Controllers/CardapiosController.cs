@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PizzariaMvc.Data;
+using PizzariaMvc.Services;
 using System.Threading.Tasks;
 
 namespace PizzariaMvc.Controllers
@@ -8,16 +9,18 @@ namespace PizzariaMvc.Controllers
     public class CardapiosController : Controller
     {
 
-        private readonly PizzariaMvcContext _context;
+        private readonly CardapiosService _cardapiosService;
 
-        public CardapiosController(PizzariaMvcContext context)
+        public CardapiosController(CardapiosService cardapiosService)
         {
-            _context = context;
+            _cardapiosService = cardapiosService;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cardapios.ToListAsync());
+            var resultado = await _cardapiosService.ShowCardapioAsync();
+
+            return View(resultado);
         }
     }
 }

@@ -42,6 +42,7 @@ namespace PizzariaMvc
                         builder.MigrationsAssembly("PizzariaMvc")));
 
             services.AddScoped<PizzasService>();
+            services.AddScoped<CardapiosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
