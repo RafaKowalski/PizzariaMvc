@@ -43,6 +43,7 @@ namespace PizzariaMvc
 
             services.AddScoped<PizzasService>();
             services.AddScoped<CardapiosService>();
+            services.AddScoped<ClientesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
