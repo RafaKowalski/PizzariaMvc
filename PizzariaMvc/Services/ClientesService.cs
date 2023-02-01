@@ -16,7 +16,7 @@ namespace PizzariaMvc.Services
             _pizzariaMvcDbContext = pizzariaMvcContext;
         }
 
-        public async Task<List<Cliente>> FindAllClienteAsync()
+        public async Task<ICollection<Cliente>> FindAllClienteAsync()
         {
             return await _pizzariaMvcDbContext.Clientes.OrderBy(x => x.Nome).ToListAsync();
         }
