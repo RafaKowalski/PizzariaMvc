@@ -22,12 +22,6 @@ namespace PizzariaMvc.Services
             return await _pizzariaMvcDbContext.Pizzas.OrderBy(x => x.TamanhoPizza).ToListAsync();
         }
 
-        public async Task AddPizza(Pizza pizza)
-        {
-            _pizzariaMvcDbContext.Add(pizza);
-            await _pizzariaMvcDbContext.SaveChangesAsync();
-        }
-
         public async Task<Pizza> ProcuraIdPizza(int? id)
         {
             return await _pizzariaMvcDbContext.Pizzas.FindAsync(id);
