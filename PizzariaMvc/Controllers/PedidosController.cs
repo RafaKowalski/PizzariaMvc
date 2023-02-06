@@ -52,16 +52,14 @@ namespace PizzariaMvc.Controllers
         }
 
         // GET: Pedidos/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-        //    ICollection<Cliente> clientes = await _clientesService.FindAllClienteAsync();
-        //    ICollection<Pizza> pizzas = await _pizzasService.FindAllPizzasAsync();
+            ICollection<Cliente> clientes = await _clientesService.FindAllClienteAsync();
+            ICollection<Pizza> pizzas = await _pizzasService.FindAllPizzasAsync();
 
-        //    var viewModel = new PedidoViewModel(clientes, pizzas);
+            var viewModel = new PedidoViewModel(clientes, pizzas);
 
-        //    return View(viewModel);
-
-            return View();
+            return View(viewModel);
         }
 
         // POST: Pedidos/Create
