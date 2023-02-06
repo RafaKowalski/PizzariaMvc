@@ -30,7 +30,9 @@ namespace PizzariaMvc.Controllers
         // GET: Pedidos
         public async Task<IActionResult> Index()
         {
-            return View(await _pedidosService.FindAllPedidosAsync());
+            var result = await _pedidosService.FindAllPedidosAsync();
+
+            return View(result);
         }
 
         // GET: Pedidos/Details/5
