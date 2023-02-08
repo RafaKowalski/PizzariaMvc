@@ -8,6 +8,7 @@ namespace PizzariaMvc.Models
     {
         [Display(Name = "Número do Registro")]
         public int Id { get; set; }
+        [Display(Name = "Quantidade de Sabores")]
         public int QtdPizzas { get; set; }
         public TamanhoPizza TamanhoPizza { get; set; }
         public double TrocoPara { get; set; }

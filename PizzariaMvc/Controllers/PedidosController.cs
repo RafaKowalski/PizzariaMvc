@@ -44,6 +44,8 @@ namespace PizzariaMvc.Controllers
             }
 
             var pedido = await _context.Pedidos
+                .Include(c => c.Clientes)
+                .Include(p => p.Pizzas)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pedido == null)
             {
