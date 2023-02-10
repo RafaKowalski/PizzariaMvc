@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PizzariaMvc.Models.ViewModel
 {
@@ -7,6 +8,7 @@ namespace PizzariaMvc.Models.ViewModel
         public Pedido Pedido { get; set; }
         public ICollection<Cliente> Cliente { get; set; }
         public ICollection<Pizza> Pizza { get; set; }
+        public DateTime Data { get; set; }
 
         public PedidoViewModel(Pedido pedido, ICollection<Cliente> clientes, ICollection<Pizza> pizzas)
         {
@@ -19,6 +21,11 @@ namespace PizzariaMvc.Models.ViewModel
         {
             Cliente = cliente;
             Pizza = pizza;
+        }
+
+        public PedidoViewModel(Pedido pedido, ICollection<Cliente> cliente, ICollection<Pizza> pizza, DateTime data) : this(pedido, cliente, pizza)
+        {
+            Data = data;
         }
     }
 }

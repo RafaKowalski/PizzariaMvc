@@ -61,8 +61,9 @@ namespace PizzariaMvc.Controllers
             Pedido pedido = await _pedidosService.ValidaTamanhoComQuantidade();
             ICollection<Cliente> clientes = await _clientesService.FindAllClienteAsync();
             ICollection<Pizza> pizzas = await _pizzasService.FindAllPizzasAsync();
+            DateTime date = DateTime.Now;
 
-            var viewModel = new PedidoViewModel(pedido, clientes, pizzas);
+            var viewModel = new PedidoViewModel(pedido, clientes, pizzas, date);
 
             return View(viewModel);
         }
