@@ -6,7 +6,6 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<h4>Pedidos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,11 +32,6 @@
                 <span asp-validation-for="Pedido.Troco" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
-                <span asp-validation-for="Data" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Pedido.ClienteId" class="control-label"></label>
                 <select asp-for="Pedido.ClienteId" asp-items="@(new SelectList(Model.Cliente,"Id","Nome"))" class="form-control"></select>
             </div>
@@ -45,6 +39,18 @@
                 <label asp-for="Pedido.PizzaId" class="control-label"></label>
                 <select asp-for="Pedido.PizzaId" asp-items="@(new SelectList(Model.Pizza,"Id","Id"))" class="form-control"></select>
             </div>
+
+            <table>
+                <thead>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Data)
+                    </dd>
+                </thead>
+            </table>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
