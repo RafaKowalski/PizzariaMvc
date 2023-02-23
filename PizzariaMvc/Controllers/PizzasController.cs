@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PizzariaMvc.Data;
 using PizzariaMvc.Models;
 using PizzariaMvc.Services;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace PizzariaMvc.Controllers
 {
@@ -74,6 +75,31 @@ namespace PizzariaMvc.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(pizza);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pizza = await _pizzasService.Delete(id);
+
+            if (pizza == null)
+            {
+                return NotFound();
+            }
+
+            return View(pizza);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _pizzasService.ConfirmarDelete(id);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
