@@ -1,4 +1,5 @@
 ﻿@model PizzariaMvc.Models.ViewModel.PedidoViewModel
+@using PizzariaMvc.Data.Enum;
 
 @{
     ViewData["Title"] = "Novo Pedido";
@@ -18,8 +19,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Pedido.TamanhoPizza" class="control-label"></label>
-                <input asp-for="Pedido.TamanhoPizza" class="form-control" />
-                <span asp-validation-for="Pedido.TamanhoPizza" class="text-danger"></span>
+            </div>
+            <div>
+                <select asp-for="Pedido.TamanhoPizza" asp-items="Html.GetEnumSelectList<TamanhoPizza>()"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Pedido.TrocoPara" class="control-label"></label>
