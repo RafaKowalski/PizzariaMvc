@@ -25,7 +25,6 @@ namespace PizzariaMvc.Services
         public async Task<Pedido> ValidaTamanhoComQuantidade()
         {
             var pedido = new Pedido();
-            var tamanhoPizza = new TamanhoPizza();
 
             if (pedido.TamanhoPizza == TamanhoPizza.Pequena)
                 pedido.QtdPizzas = 2;
